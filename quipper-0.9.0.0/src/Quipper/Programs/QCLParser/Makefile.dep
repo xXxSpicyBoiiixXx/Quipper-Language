@@ -1,0 +1,29 @@
+# This file is part of Quipper. Copyright (C) 2011-2019. Please see the
+# file COPYRIGHT for a list of authors, copyright holders, licensing,
+# and other details. All rights reserved.
+# 
+# ======================================================================
+
+QCLParser Main.hi: Main.hs ../../../../src/Quipper.hs ../../../../src/Quipper/Internal/Monad.hs ../../../../src/Quipper/Internal/Generic.hs ../../../../src/Quipper/Internal/QData.hs ../../../../src/Quipper/Internal/QClasses.hs ../../../../src/Quipper/Internal/Control.hs ../../../../src/Quipper/Internal/CircLifting.hs ../../../../src/Quipper/Internal/Transformer.hs ../../../../src/Quipper/Internal/Circuit.hs ../../../../src/Quipper/Internal/Classical.hs ../../../../src/Quipper/Internal/Printing.hs ../../../../src/Quipper/Internal/Labels.hs ../../../../src/Quipper/Utils/Template.hs ../../../../src/Quipper/Utils/Auxiliary.hs ../../../../src/Quipper/Utils/Tuple.hs ../../../../src/Quipper/Utils/Typeable.hs ../../../../src/Quipper/Utils/Preview.hs ../../../../src/Quipper/Utils/Template/Lifting.hs ../../../../src/Quipper/Utils/Template/Auxiliary.hs ../../../../src/Quipper/Utils/Template/LiftQ.hs ../../../../src/Quipper/Utils/Template/ErrorMsgQ.hs
+Main.hi: Main.hs ../../../Quipper.hi
+../../../Quipper.hi: ../../../Quipper.hs ../../Internal/Monad.hi ../../Internal/Generic.hi ../../Internal/QData.hi ../../Internal/QClasses.hi ../../Internal/Control.hi ../../Internal/CircLifting.hi ../../Internal/Transformer.hi ../../Internal/Circuit.hi ../../Internal/Classical.hi ../../Internal/Printing.hi ../../Internal/Labels.hi ../../Utils/Template.hi ../../Utils/Auxiliary.hi
+../../Internal/Monad.hi: ../../Internal/Monad.hs ../../Internal/Circuit.hi ../../Utils/Auxiliary.hi ../../Internal/Transformer.hi ../../Internal/Control.hi
+../../Internal/Circuit.hi: ../../Internal/Circuit.hs ../../Utils/Auxiliary.hi
+../../Utils/Auxiliary.hi: ../../Utils/Auxiliary.hs
+../../Internal/Transformer.hi: ../../Internal/Transformer.hs ../../Internal/Circuit.hi ../../Utils/Auxiliary.hi
+../../Internal/Control.hi: ../../Internal/Control.hs ../../Internal/Circuit.hi ../../Utils/Tuple.hi
+../../Utils/Tuple.hi: ../../Utils/Tuple.hs
+../../Internal/Generic.hi: ../../Internal/Generic.hs ../../Internal/Circuit.hi ../../Internal/Monad.hi ../../Utils/Auxiliary.hi ../../Utils/Tuple.hi ../../Internal/Transformer.hi ../../Internal/Control.hi ../../Internal/QData.hi
+../../Internal/QData.hi: ../../Internal/QData.hs ../../Internal/Monad.hi ../../Utils/Auxiliary.hi ../../Utils/Tuple.hi ../../Internal/Labels.hi ../../Internal/Transformer.hi ../../Internal/Control.hi ../../Utils/Typeable.hi
+../../Internal/Labels.hi: ../../Internal/Labels.hs ../../Internal/Circuit.hi ../../Internal/Monad.hi ../../Utils/Auxiliary.hi ../../Utils/Tuple.hi ../../Internal/Transformer.hi
+../../Utils/Typeable.hi: ../../Utils/Typeable.hs
+../../Internal/QClasses.hi: ../../Internal/QClasses.hs ../../Internal/Generic.hi ../../Internal/QData.hi ../../Internal/Monad.hi
+../../Internal/CircLifting.hi: ../../Internal/CircLifting.hs ../../Internal/Monad.hi ../../Internal/Monad.hi ../../Internal/Circuit.hi ../../Internal/Generic.hi ../../Internal/QData.hi ../../Utils/Auxiliary.hi ../../Internal/Control.hi ../../Internal/QClasses.hi ../../Utils/Template.hi
+../../Utils/Template.hi: ../../Utils/Template.hs ../../Utils/Template/Lifting.hi ../../Utils/Template/Auxiliary.hi
+../../Utils/Template/Lifting.hi: ../../Utils/Template/Lifting.hs ../../Utils/Template/LiftQ.hi
+../../Utils/Template/LiftQ.hi: ../../Utils/Template/LiftQ.hs ../../Utils/Template/ErrorMsgQ.hi ../../Utils/Template/ErrorMsgQ.hi
+../../Utils/Template/ErrorMsgQ.hi: ../../Utils/Template/ErrorMsgQ.hs
+../../Utils/Template/Auxiliary.hi: ../../Utils/Template/Auxiliary.hs ../../Utils/Auxiliary.hi
+../../Internal/Classical.hi: ../../Internal/Classical.hs ../../Internal/Generic.hi ../../Internal/QData.hi ../../Internal/Monad.hi ../../Internal/Control.hi ../../Internal/Transformer.hi
+../../Internal/Printing.hi: ../../Internal/Printing.hs ../../Utils/Auxiliary.hi ../../Utils/Preview.hi ../../Internal/Circuit.hi ../../Internal/Generic.hi ../../Internal/Monad.hi ../../Internal/QData.hi
+../../Utils/Preview.hi: ../../Utils/Preview.hs

@@ -1,0 +1,36 @@
+# This file is part of Quipper. Copyright (C) 2011-2019. Please see the
+# file COPYRIGHT for a list of authors, copyright holders, licensing,
+# and other details. All rights reserved.
+# 
+# ======================================================================
+
+Auxiliary.hi: Auxiliary.hs
+CommandLine.hi: CommandLine.hs Auxiliary.hi
+Preview.hi: Preview.hs
+PortableSignals.hi: PortableSignals.hs
+RandomSource.hi: RandomSource.hs
+Sampling.hi: Sampling.hs Tuple.hi
+Tuple.hi: Tuple.hs
+Stabilizers/Pauli.hi: Stabilizers/Pauli.hs
+Stabilizers/Clifford.hi: Stabilizers/Clifford.hs Stabilizers/Pauli.hi
+Template.hi: Template.hs Template/Lifting.hi Template/Auxiliary.hi
+Template/Lifting.hi: Template/Lifting.hs Template/LiftQ.hi
+Template/LiftQ.hi: Template/LiftQ.hs Template/ErrorMsgQ.hi Template/ErrorMsgQ.hi
+Template/ErrorMsgQ.hi: Template/ErrorMsgQ.hs
+Template/Auxiliary.hi: Template/Auxiliary.hs Auxiliary.hi
+Typeable.hi: Typeable.hs
+Auxiliary.hi: Auxiliary.hs
+CommandLine.hi: CommandLine.hs ../../../src/Quipper/Utils/Auxiliary.hs
+Preview.hi: Preview.hs
+PortableSignals.hi: PortableSignals.hs
+RandomSource.hi: RandomSource.hs
+Sampling.hi: Sampling.hs ../../../src/Quipper/Utils/Tuple.hs
+Stabilizers/Pauli.hi: Stabilizers/Pauli.hs
+Stabilizers/Clifford.hi: Stabilizers/Clifford.hs ../../../src/Quipper/Utils/Stabilizers/Pauli.hs
+Template.hi: Template.hs ../../../src/Quipper/Utils/Template/Lifting.hs ../../../src/Quipper/Utils/Template/Auxiliary.hs ../../../src/Quipper/Utils/Template/LiftQ.hs ../../../src/Quipper/Utils/Template/ErrorMsgQ.hs ../../../src/Quipper/Utils/Auxiliary.hs
+Template/Auxiliary.hi: Template/Auxiliary.hs ../../../src/Quipper/Utils/Auxiliary.hs
+Template/ErrorMsgQ.hi: Template/ErrorMsgQ.hs
+Template/Lifting.hi: Template/Lifting.hs ../../../src/Quipper/Utils/Template/LiftQ.hs ../../../src/Quipper/Utils/Template/ErrorMsgQ.hs
+Template/LiftQ.hi: Template/LiftQ.hs ../../../src/Quipper/Utils/Template/ErrorMsgQ.hs
+Tuple.hi: Tuple.hs
+Typeable.hi: Typeable.hs

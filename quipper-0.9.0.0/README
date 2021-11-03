@@ -1,0 +1,702 @@
+This file is part of Quipper. Copyright (C) 2011-2019. Please see the
+file COPYRIGHT for a list of authors, copyright holders, licensing,
+and other details. All rights reserved.
+
+======================================================================
+
+This is Quipper.
+
+Copyright, License, and Disclaimers
+===================================
+
+See the file COPYRIGHT.
+
+Installing Quipper
+==================
+
+Starting from version 0.9, the recommended way to install Quipper is
+using Cabal.
+
+Summary
+=======
+
+In a nutshell, the commands
+
+  cabal update
+  cabal install quipper
+
+installs all of the required components of Quipper (the Quipper
+language, the Quipper standard library, and the Quipper tools). In
+addition, the command
+
+  cabal install quipper-all
+
+installs all of the above, and also the Quipper algorithms and demos.
+For more detailed instructions and prerequisites, see below.
+
+Detailed instructions
+=====================
+
+Step-by-step instructions for Windows
+-------------------------------------
+
+(1) Install Acrobat Reader from https://get.adobe.com/reader/
+
+(2) Install Awk from http://gnuwin32.sourceforge.net/packages/gawk.htm
+
+(3) Update your PATH to include the directory where Awk was installed:
+    System Properties -> Advanced -> Environment variables (at the
+    bottom) -> edit the user variable PATH by adding at the end:
+
+    ;C:\Program Files (x86)\GnuWin32\bin
+
+    In Windows 7, this is under Control Panel -> System and Security
+    -> System -> Advanced system settings -> Environment variables.
+
+(4) Install the Haskell Platform from
+    https://www.haskell.org/platform/windows.html
+
+    Leave the "Update system settings" box checked. The PATH will be
+    automatically updated as part of the installation process.
+
+(5) Start the Windows Command Prompt (Start Menu -> All Programs ->
+    Accessories -> Command Prompt).
+
+(6) Check that the PATH is correctly set for Awk:
+
+    awk -W version
+
+    If you get an error message, repeat steps (2) and (3).
+
+(7) Check which version of GHC and Cabal you have:
+
+    ghc --version
+    cabal --version
+
+    Quipper requires GHC >= 8.0 and Cabal >= 1.24.0.0.
+
+    On Windows, we have tested Quipper with GHC 8.2.2 and 8.6.5 and
+    with Cabal 2.2.0.0 and 2.4.1.0. Other versions will likely also
+    work.
+
+    Note: if your version of Cabal is 3.0.0.0 or higher, you may have
+    to prepend "v1-" to all cabal commands mentioned below. For
+    example, instead of "cabal install quipper", you may have to use
+    "cabal v1-install quipper" and so on.
+
+(8) Install Quipper:
+
+    cabal update
+    cabal install quipper
+
+Step-by-step instructions for Linux
+-----------------------------------
+
+Each Linux distribution has its own package manager. In the following
+instructions, we have assumed that you are using Ubuntu or Debian
+Linux, in which case the package manager is called "apt". If you are
+using a different flavor of Linux, please use your distribution's
+package manager instead.
+
+(1) Install Acrobat Reader or XPdf. Note that the last version of
+    Acrobat Reader for Linux is from 2013, so installing it can be a
+    bit tricky (however, it still works). On the other hand, XPdf is
+    included in many Linux distributions, e.g. on Ubuntu and Debian
+    Linux, you can install it with "sudo apt install xpdf".
+
+(2) Awk is probably already installed. Check this with "awk -W version".
+    If it is not already installed, install it with 
+    "sudo apt install gawk" or similar.
+
+(3) Install Haskell and Cabal.
+
+    Method 1:
+    ---------
+
+    Your Linux distribution probably provides packages for
+    these, e.g. "sudo apt install ghc cabal-install"
+
+    You should also set PATH="$HOME/.cabal/bin:$PATH"
+
+    You can make the PATH permanent by putting the above command into
+    your .bashrc file.
+
+    Method 2:
+    ---------
+
+    Use ghcup. If you want to install specific versions, or a version
+    that is different from what your Linux distribution provides, run
+    these commands as an ordinary user. (You may first have to install
+    curl: "sudo apt install curl")
+
+    curl https://gitlab.haskell.org/haskell/ghcup/raw/master/ghcup > /tmp/ghcup
+    chmod +x /tmp/ghcup
+    /tmp/ghcup install 8.6.5
+    /tmp/ghcup set 8.6.5
+    /tmp/ghcup install-cabal 2.4.1.0
+    PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+
+    You can make the PATH permanent by putting the above command into
+    your .bashrc file.
+
+(4) Check which version of GHC and Cabal you have:
+
+    ghc --version
+    cabal --version
+
+    Quipper requires GHC >= 8.0 and Cabal >= 1.24.0.0.
+
+    On Linux, we have tested Quipper with GHC 8.0.2, 8.2.2, 8.4.4,
+    8.6.5, and 8.8.1 and with Cabal 1.24.0.0, 2.2.0.0, and 2.4.1.0.
+    Other versions will likely also work.
+
+    Note: if your version of Cabal is 3.0.0.0 or higher, you may have
+    to prepend "v1-" to all cabal commands mentioned below. For
+    example, instead of "cabal install quipper", you may have to use
+    "cabal v1-install quipper" and so on.
+
+(5) Make sure that some required system libraries are installed. You
+    can initially skip this step, but come back to it if you get error
+    messages such as the following in the next step: "cannot find -lgmp",
+    "Missing C (or bad) library: z"
+
+    On Ubuntu or Debian Linux, you can install the missing libraries
+    with the following commands:
+
+    sudo apt install libgmp-dev
+    sudo apt install zlib1g-dev
+
+(6) Install Quipper:
+
+    cabal update
+    cabal install quipper
+
+Step-by-step instructions for Mac
+---------------------------------
+
+(1) On Mac, Quipper uses the Mac Previewer to display PDF files, so
+    you do not need to install Acrobat Reader.
+
+(2) Awk is probably already installed. Check this with "awk -W version".
+
+(3) Install Haskell and Cabal. The quickest way to do so is to use the
+    following command and follow the on-screen instructions:
+
+    curl https://get-ghcup.haskell.org -sSf | sh
+
+    Alternatively, if you prefer to install specific versions of GHC
+    and Cabal, you can also follow "Method 2" from the Linux
+    instructions above. They work on Mac as well.
+
+(4) Check which version of GHC and Cabal you have:
+
+    ghc --version
+    cabal --version
+
+    Quipper requires GHC >= 8.0 and Cabal >= 1.24.0.0.
+
+    On Mac, we have tested Quipper with GHC 8.0.2, 8.2.2, 8.4.4,
+    8.6.5, and 8.8.1 and with Cabal 1.24.0.0, 2.2.0.0, 2.4.1.0, and
+    3.0.0.0.  Other versions will likely also work.
+
+    Note: if your version of Cabal is 3.0.0.0 or higher, you may have
+    to prepend "v1-" to all cabal commands mentioned below. For
+    example, instead of "cabal install quipper", you may have to use
+    "cabal v1-install quipper" and so on.
+    
+(5) Add the Cabal binary directory to your PATH:
+
+    PATH="$HOME/.cabal/bin:$PATH"
+
+    You can make the PATH permanent by putting the above command into
+    your .bashrc file.
+
+(6) Install Quipper:
+
+    cabal update
+    cabal install quipper
+
+Optional packages:
+==================
+
+The following optional packages are also available and can be
+installed with "cabal install package-name":
+
+* quipper-algorithms: Seven quantum algorithms that were implemented
+  in Quipper. See "Running the included algorithms" below for more
+  information.
+
+* quipper-demos: Various sample code snippets that illustrate
+  different Quipper features. It may make more sense to download the
+  package source and individually inspect and compile the programs in
+  the Quipper/Demos subdirectory. However, it is also possible to
+  "cabal install qiupper-demos" to compile and install all of the
+  demos at once.
+
+Alternatively, "cabal install quipper-all" will install Quipper and
+all of the above in one step.
+
+List of all packages
+--------------------
+
+Quipper consists of the following individual Cabal packages:
+
+quipper-utils:      Some general-purpose functions used by Quipper.
+quipper-language:   The Quipper language.
+quipper-cabal:      Some functions for using Quipper in Cabal packages.
+quipper-libraries:  The standard Quipper libraries.
+quipper-tools:      Some standalone tools for manipulating Quipper circuits.
+quipper-algorithms: Seven quantum algorithms implemented in Quipper.
+quipper-demos:      Code snippets to demonstrate various Quipper features.
+
+quipper:            A meta-package to install quipper-utils, 
+                    quipper-language, quipper-cabal, quipper-libraries,
+                    and quipper-tools.
+
+quipper-all:        A meta-package to install all of the above.
+
+Special note for GHC 8.8
+========================
+
+When using ghc 8.8, sometimes "cabal install quipper-all" will fail
+during the "Resolving dependencies" stage with the error message
+"Backjump limit reached". If this happens, you can use
+
+cabal install quipper-all --max-backjumps=10000
+
+Make sure your PATH is set correctly
+====================================
+
+Cabal installs executable programs, including various components of
+Quipper, in a location that depends on the operating system and on the
+method you used to install Cabal. Typical locations are:
+
+  On Linux and Mac:   $HOME/.cabal/bin
+  On Windows:         C:\Users\xxx\AppData\Roaming\cabal\bin,
+
+where xxx is your username.
+
+Before using Quipper, you must ensure that this directory is included
+on your system PATH.  If you followed the above step-by-step
+instructions, you have already done this. Otherwise, the instructions
+are as follows:
+
+  On Linux and Mac: Put the following command in your .bashrc file:
+
+     PATH=$PATH:$HOME/.cabal/bin
+              
+  On Windows: Go to the System Properties, select Advanced ->
+  Environment Variables (at the bottom), and edit the user variable
+  PATH by adding at the end
+
+     ;C:\Users\xxx\AppData\Roaming\cabal\bin
+
+  Note: replace "xxx" by your username.
+
+Invoking the Quipper compiler
+=============================
+
+The Quipper compiler is called "quipper", and is installed by the
+quipper-language package in the directory where Cabal installs
+executable programs (see "Where Cabal installs executable programs"
+above). The "quipper" command works almost identically to the GHC
+Haskell compiler - indeed, it is merely a wrapper around GHC,
+providing some pre-processing and setting required compilation
+options. There is also a "quipperi" program that is analogous to
+"ghci", and a "quipperdoc" program that is analogous to "haddock".
+
+To try this out, the directory "src/Quipper/Demos" contains various
+small stand-alone programs that can be compiled with Quipper, and are
+useful for demonstrating the basic Quipper idiom. Each program can be
+compiled and run like this:
+
+For example:
+
+  quipper And_gate.hs
+  ./And_gate
+
+If the previewer is working properly, the circuit should show up in
+Acrobat Reader (on Linux and Windows) or Preview (on Mac OS). If not,
+make sure that Acrobat Reader is installed, or change "Preview" to
+"PDF" in the file (for PDF output).
+
+The naming of built-in gates and many operators can be found out by
+looking at the documentation of the "Quipper" module (the main public
+interface of the Quipper system).
+
+
+Using the Quipper tools
+=======================
+
+The quipper-tools package (which is automatically installed with
+Quipper) contains a number of stand-alone programs, most of which read
+a circuit in the Quipper ASCII format on standard input. These tools
+are intended as examples; they illustrate how other such tools can be
+written. Each tool also has a --help option to display usage information.
+
+Graphical viewing of circuits:
+------------------------------
+
+* quipper-eps: convert a circuit from ASCII to EPS format.
+
+* quipper-pdf: convert a circuit from ASCII to PDF format.
+
+* quipper-preview: read a circuit and launch the previewer.
+
+Decomposing circuits into different gate sets:
+----------------------------------------------
+
+* quipper-approximate: decompose rotation and phase gates into the
+  Clifford+T base, using the approximate synthesis algorithm of 
+  http://arxiv.org/abs/1403.2975.
+
+* quipper-binary: decompose a circuit into binary gates.
+
+* quipper-cliffordt: decompose a circuit into the Clifford+T base,
+  using both exact and approximate synthesis.
+
+* quipper-exact: decompose all gates that permit exact Clifford+T
+ representations into the following gates: controlled-not (with
+ positive or negative control), and single-qubit Clifford gate, T, and
+ T⁻¹.  Classical controls and classical gates are not subject to the
+ gate base, and are left untouched.
+
+* quipper-standard: decompose a circuit into the "standard" gates {X,
+  Y, Z, H, S, S⁻¹, T, T⁻¹, CNOT}, using exact and approximate
+  synthesis.
+
+* quipper-strict: decompose a circuit into the gates {H, S, T, CNOT},
+  using exact and approximate synthesis.
+
+* quipper-trimcontrols: trim excess controls from gates, so that the
+  gates {NOT, X, Y, Z, iX} have at most two controls, phase gates have
+  no controls, and all other gates have at most one control.
+
+* quipper-unbox: unwind a circuit by inlining all top-level boxed
+  subroutines. This can substantially increase the size of the circuit
+  representation. 
+
+Resource analysis:
+------------------
+
+* quipper-depth: read a circuit and output its depth.
+
+* quipper-gatecount: read a circuit and output gate counts.
+
+Simulation:
+-----------
+
+* quipper-simulate: read a circuit and simulate it by applying it to
+  every posssible basis vector. This is not efficient and only works
+  for very small circuits. Any measurements in the circuit will be
+  simulated probabilistically.
+
+Miscellaneous:
+--------------
+
+* quipper-ascii: the identity function on circuits: read a circuit on
+  standard output and then output the same circuit to standard
+  output. Illustrates how to parse and output the Quipper ASCII
+  circuit format.
+
+* quipper-qclparser: read an execution trace produced by Ömer's QCL,
+  and turn it into a Quipper circuit.
+
+
+Browsing the documentation and source code
+==========================================
+
+The Quipper documentation is located at
+
+  https://www.mathstat.dal.ca/~quipper/doc
+
+While it is possible the browse the Quipper source code in a text
+editor, it is much nicer to browse the online documentation. The
+documentation is fully cross-referenced and indexed, with links to
+color-coded source files.
+
+
+Building the documentation
+==========================
+
+As for all Cabal packages, the documentation can be built with
+
+  cabal install --enable-documentation
+
+Please note: using Cabal to hyperlink the documentation to the source
+code (with the option --haddock-hyperlink-source) does not currently
+work well, because Cabal will link to the pre-processed source code,
+rather than the original source code.
+
+
+Running the Quipper algorithms
+==============================
+
+The Cabal package quipper-algorithms contains seven quantum algorithms
+that were implemented in Quipper. They can be installed with
+
+  cabal install quipper-algorithms
+
+This will build and install seven executable programs, which can be
+run with various command line parameters to do different things. Run
+each command with option --help to see a summary of the usage
+information. (See "Where Cabal installs executable programs" for
+information on where the programs are installed and how to set your
+PATH).
+
+In the following, we describe the set of options for the algorithms
+that were implemented.
+
+
+Running the bwt program
+=======================
+
+Usage for Binary Welded Tree algorithm:
+---------------------------------------
+
+Usage: bwt [OPTION...]
+  -h             --help                 print usage info and exit
+  -C             --circuit              output the whole circuit (default)
+  -O             --oracle               output only the oracle
+  -K             --oraclec              output the "classical" oracle as a classical circuit
+  -G             --graph                print colored graph computed from oracle
+  -S             --simulate             run simulations of some circuit fragments for tree height n
+  -f <format>    --format=<format>      output format for circuits (default: preview)
+  -g <gatebase>  --gatebase=<gatebase>  type of gates to decompose into (default: logical)
+  -o <oracle>                           select oracle to use (default: orthodox)
+  -n <n>         --height=<n>           set tree height (positive; default 5)
+  -c <c>         --color=<c>            color to use with --oracle (0..3, default 0)
+  -s <s>         --repeats=<s>          set parameter s (iteration count; default 1)
+  -l             --large                set large problem size: n=300, s=336960
+  -t <dt>        --dt=<dt>              set parameter dt (simulation time step; default pi/180)
+Possible values for format are: eps, pdf, ps, postscript, ascii, preview, gatecount.
+Possible values for gatebase are: logical, binary, toffoli, cliffordt_old, cliffordt, cliffordt_keepphase, standard, strict, approximate, approximate_keepphase, exact, trimcontrols.
+Possible values for oracle are: orthodox, simple, blackbox, classical, template, optimized.
+
+Examples of command line options:
+---------------------------------
+
+* Show the complete circuit for the BWT algorithm using the
+  "orthodox" (official GFI) oracle, with n=5 and s=1:
+
+  ./bwt -C -o orthodox -n 5 -s 1
+
+  (One can point out the different parts of the algorithm: 8 oracle
+  calls, and 4 very short diffusion steps).
+
+* Show the same, using the "Template Haskell" oracle: this oracle is
+  much larger, but automatically generated from classical code (and
+  completely unoptimized):
+
+  ./bwt -C -o template -n 5 -s 1
+
+  The "template oracle" is defined in BWT/Template.hs. See the
+  documentation of the module Quipper/CircLifting for how it works.
+
+* Show the graph of the BWT algorithm, which is obtained by
+  simulating the orthodox oracle (and therefore offers some evidence
+  for the correctness of the oracle implementation):
+
+  ./bwt -G -o orthodox -n 5
+
+* Show the orthodox oracle for n=300. Note that this will result in a
+  big file. One has to zoom in substantially to see gates. 
+
+  ./bwt -O -o orthodox -n 300
+
+* Show the complete circuit for the BWT algorithm, but decompose
+  everything into binary gates:
+
+  ./bwt -C -o orthodox -n 5 -s 1 -g binary 
+
+* Show the oracle from Figure 1a (alternate oracle).
+
+  ./bwt -C -o figure1a
+
+* The same, decomposed into binary+Toffoli gates, or binary gates
+  only, respectively:
+
+  ./bwt -C -o figure1a -g toffoli
+  ./bwt -C -o figure1a -g binary
+
+* Show gate counts for BWT algorithm with n=300 and s=1, using
+  "orthodox" oracle:
+
+  ./bwt -C -o orthodox -n 300 -s 1 -f gatecount
+
+* Show gate counts for same, after decomposition to binary gates:
+
+  ./bwt -C -o orthodox -n 300 -s 1 -f gatecount -g binary 
+
+Obviously, most other combinations of command line options are also
+possible, for example: decompose to toffoli gates and then simulate
+and show the graph. Some other combinations are not legal: for
+example, decomposing to binary gates and then simulating. (The
+classical simulator will complain that the circuit is not boolean; it
+contains "V" gates).
+
+* Similarly, one can run demos for the triangle finding
+  algorithm using various command line options. 
+
+Note that the triangle finding algorithm is not a deliverable; it is a
+work in progress. The only implemented algorithm that is officially a
+deliverable is the "orthodox" BWT implementation in BWT.BWT.
+
+Running the bf program
+======================
+
+Usage for the Boolean Formula algorithm:
+----------------------------------------
+
+Usage: bf [OPTION...]
+  -C             --circuit              output the whole circuit (default)
+  -D             --demo                 run a demo of the circuit
+  -H             --hexboard             output a representation of the initial state of the given oracle, i.e. the game played so far
+  -p <part>      --part=<part>          which part of the circuit to use (default: whole)
+  -o <oracle>    --oracle=<oracle>      which oracle to use (default: small)
+  -m <moves>     --moves=<moves>        which moves have already been made (default: [])
+  -f <format>    --format=<format>      output format for circuits (default: _preview)
+  -d             --dummy                set to only use a dummy HEX gate instead of the full hex circuit
+  -h             --help                 print usage info and exit
+  -g <gatebase>  --gatebase=<gatebase>  type of gates to decompose the output circuit into (default: logical)
+Possible values for part are: whole, u, oracle, hex, checkwin_red, diffuse, walk, undo_oracle.
+Possible values for oracle are: 9by7, small, custom x y t.
+Possible values for format are: eps, pdf, ps, postscript, ascii, preview, gatecount.
+Possible values for gatebase are: logical, binary, toffoli, cliffordt_old, cliffordt, cliffordt_keepphase, standard, strict, approximate, approximate_keepphase, exact, trimcontrols.
+
+Running the cl program
+======================
+
+Usage for the Class Number algorithm:
+-------------------------------------
+
+Usage: cl [OPTION...]
+  -h               --help                 print usage info and exit
+  -f <format>      --format=<format>      output format for circuits        (default: ASCII)
+  -g <gatebase>    --gatebase=<gatebase>  gates to decompose into           (default: Logical)
+  -1                                      output the circuit for stage 1 of the algorithm (default)
+  -4                                      output the circuit for stage 4 of the algorithm
+  -S <subroutine>  --sub=<subroutine>     output the circuit for a specific subroutine
+  -R               --regulator            classically, find the regulator, given Δ
+  -F                                      classically, find the fundamental unit, given Δ
+  -P                                      classically, find the fundamental solution of Pell’s equation, given Δ
+  -d <N>           --delta=<N>            discriminant Δ (a.k.a. D)                 (default: 28)
+  -s <N>           --ss=<N>               estimated bound on period S, for stage 1 (default: 2)
+  -i <N>                                  estimated bound on log_2 S, for stage 1 (default: 1)
+  -r <N>           --rr=<N>               approximate regulator R, for stage 4  (default: 12.345)
+  -q <N>                                  The parameter q, for stage 4        (default: 4)
+  -k <N>                                  The parameter k, for stage 4        (default: 3)
+  -n <N>                                  The parameter n, for stage 4        (default: 3)
+  -m <N>                                  The parameter m, for stage 4        (default: 5)
+                   --seed=<N>             Random seed (0 for seed from time)(default: 1)
+Possible values for format are: eps, pdf, ps, postscript, ascii, preview, gatecount.
+Possible values for gatebase are: logical, binary, toffoli, cliffordt_old, cliffordt, cliffordt_keepphase, standard, strict, approximate, approximate_keepphase, exact, trimcontrols.
+Possible values for subroutine are: rho, rhoinv, normalize, dotprod, starprod, fn.
+
+Running the gse program
+=======================
+
+Usage for Ground State Estimation algorithm:
+--------------------------------------------
+
+Usage: gse [OPTION...]
+  -h             --help                 print usage info and exit
+  -C             --circuit              output the whole circuit (default)
+  -T <indices>   --template=<indices>   output a particular circuit template
+  -f <format>    --format=<format>      output format for circuits (default: Preview)
+  -g <gatebase>  --gatebase=<gatebase>  gates to decompose into (default: Logical)
+  -m <N>         --orbitals=<N>         number of orbitals (default: 4)
+  -o <N>         --occupied=<N>         number of occupied orbitals (default: 2)
+  -b <N>         --precision=<N>        number of precision qubits (default: 3)
+  -D <energy>    --delta_e=<energy>     energy range (default: 6.5536)
+  -E <energy>    --e_max=<energy>       maximum energy (default: -3876.941)
+                 --n0=<N>               use N_k = n0 * 2^k (default: N_k = 1)
+  -l             --large                set large problem size (m=208, o=84, b=12, n0=100)
+  -x             --orthodox             use the Coulomb operator of Whitman et al.
+                 --h1=<file>            filename for one-electron data (default: "h_1e_ascii")
+                 --h2=<file>            filename for two-electron data (default: "h_2e_ascii")
+  -d <file>      --datadir=<file>       directory for one- and two-electron data (default: current)
+Possible values for format are: eps, pdf, ps, postscript, ascii, preview, gatecount.
+Possible values for gatebase are: logical, binary, toffoli, cliffordt_old, cliffordt, cliffordt_keepphase, standard, strict, approximate, approximate_keepphase, exact, trimcontrols.
+Indices can be specified as p,q or p,q,r,s (with no spaces)
+
+Running the qls program
+=======================
+
+Usage for Quantum Linear Systems algorithm:
+-------------------------------------------
+
+Usage: qls [OPTION...]
+  -h             --help                 print usage info and exit
+  -C             --circuit              output the whole circuit (default)
+  -O <name>      --oracle=<name>        output only the oracle <name> (default: r) 
+  -f <format>    --format=<format>      output format for circuits (default: gatecount)
+  -g <gatebase>  --gatebase=<gatebase>  type of gates to decompose into (default: logical)
+  -o <oracle>                           select oracle implementation to use (default: blackbox)
+  -p <param>     --param=<param>        choose a set of parameters (default: dummy).
+  -P <n>         --peel=<n>             peel <n> layers of boxed subroutines (default: 0).
+Possible values for format are: ascii, gatecount.
+Possible values for gatebase are: logical, binary, toffoli, cliffordt_old, cliffordt, cliffordt_keepphase, standard, strict, approximate, approximate_keepphase, exact, trimcontrols.
+Possible values for oracle implementation are: matlab, blackbox.
+Possible values for param are: dummy, small, large.
+Possible values for oracle are: r, b, A[band][t|f]. E.g. "-OA1t" asks for band 1 with boolean argument True. For all three oracles, the factors are set up to 1.0.
+
+Running the tf program
+======================
+
+Usage for Triangle Finding algorithm:
+-------------------------------------
+
+Usage: tf [OPTION...]
+  -h               --help                     print usage info and exit
+  -f <format>      --format=<format>          output format for circuits (default: preview)
+  -g <gatebase>    --gatebase=<gatebase>      type of gates to decompose into (default: logical)
+  -l <l>           --l=<l>                    parameter l (default: 4)
+  -n <n>           --n=<n>                    parameter n (default: 3)
+  -r <r>           --r=<r>                    parameter r (default: 2)
+  -C               --QWTFP                    output the whole circuit (default)
+  -O               --oracle                   output only the oracle
+  -s <subroutine>  --subroutine=<subroutine>  output the chosen subroutine (default: adder)
+  -Q                                          use alternative qRAM implementation
+  -o <oracle>                                 select oracle to use (default: blackbox)
+  -A               --arith                    test/simulate the arithmetic routines
+  -T               --oracletest               test/simulate the oracle
+Possible values for format are: eps, pdf, ps, postscript, ascii, preview, gatecount.
+Possible values for gatebase are: logical, binary, toffoli, cliffordt_old, cliffordt, cliffordt_keepphase, standard, strict, approximate, approximate_keepphase, exact, trimcontrols.
+Possible values for oracle are: orthodox, blackbox.
+Possible values for subroutine are: zero, initialize, hadamard, setup, qwsh, diffuse, fetcht, storet, fetchstoret, fetche, fetchstoree, update, swap, a15, a16, a17, a18, gcqwalk, gcqwstep, convertnode, testequal, pow17, mod3, sub, add, mult.
+
+Running the usv program
+=======================
+
+Usage for Unique Shortest Vector algorithm:
+-------------------------------------------
+
+Usage: usv [OPTION...]
+  -h             --help                 print usage info and exit
+  -f <format>    --format=<format>      output format for circuits (default: eps)
+  -g <gatebase>  --gatebase=<gatebase>  type of gates to decompose into (default: logical)
+  -n <n>         --n=<n>                parameter n (default: 5)
+  -b <b>         --b=<b>                parameter b (default: 5X5 with entries = 1)
+  -s <s>         --s=<s>                Random number generator seed s (default: 1)
+  -F                                    output subroutine f (depends on b).
+  -G                                    output subroutine g (depends on b).
+  -H                                    output subroutine h (depends on n).
+  -U                                    output algorithm 1 (depends on b).
+  -Q                                    output algorithm 2 (depends on b).
+  -R                                    output algorithm 3 (depends on b).
+  -T                                    output algorithm 4 (depends on n).
+  -S                                    output sieving subroutine (depends on n).
+  -D                                    output algorithm 5 (depends on n).
+  -t                                    test subroutine h (depends on n).
+Possible values for format are: eps, pdf, ps, postscript, ascii, preview, gatecount.
+Possible values for gatebase are: logical, binary, toffoli, cliffordt_old, cliffordt, cliffordt_keepphase, standard, strict, approximate, approximate_keepphase, exact, trimcontrols.
+
+
+Troubleshooting Guidelines
+==========================
+
+In case of problems, please contact
+
+ * Benoit Valiron <benoit.valiron@monoidal.net>
+ * Peter Selinger <selinger@mathstat.dal.ca>
