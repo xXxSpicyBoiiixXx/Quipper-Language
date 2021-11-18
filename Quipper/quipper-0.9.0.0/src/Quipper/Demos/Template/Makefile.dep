@@ -1,0 +1,18 @@
+# This file is part of Quipper. Copyright (C) 2011-2019. Please see the
+# file COPYRIGHT for a list of authors, copyright holders, licensing,
+# and other details. All rights reserved.
+# 
+# ======================================================================
+
+Test1 Test1.hi: Test1.hs ../../../../src/Quipper/Utils/Template.hs ../../../../src/Quipper/Utils/Template/Lifting.hs ../../../../src/Quipper/Utils/Template/Auxiliary.hs ../../../../src/Quipper/Utils/Template/LiftQ.hs ../../../../src/Quipper/Utils/Template/ErrorMsgQ.hs ../../../../src/Quipper/Utils/Auxiliary.hs
+Test2 Test2.hi: Test2.hs ../../../../src/Quipper/Utils/Template.hs ../../../../src/Quipper/Utils/Template/Lifting.hs ../../../../src/Quipper/Utils/Template/Auxiliary.hs ../../../../src/Quipper/Utils/Template/LiftQ.hs ../../../../src/Quipper/Utils/Template/ErrorMsgQ.hs ../../../../src/Quipper/Utils/Auxiliary.hs
+Test1.hi: Test1.hs ../../Utils/Template.hi
+../../Utils/Template.hi: ../../Utils/Template.hs ../../Utils/Template/Lifting.hi ../../Utils/Template/Auxiliary.hi
+../../Utils/Template/Lifting.hi: ../../Utils/Template/Lifting.hs ../../Utils/Template/LiftQ.hi
+../../Utils/Template/LiftQ.hi: ../../Utils/Template/LiftQ.hs ../../Utils/Template/ErrorMsgQ.hi ../../Utils/Template/ErrorMsgQ.hi
+../../Utils/Template/ErrorMsgQ.hi: ../../Utils/Template/ErrorMsgQ.hs
+../../Utils/Template/Auxiliary.hi: ../../Utils/Template/Auxiliary.hs ../../Utils/Auxiliary.hi
+../../Utils/Auxiliary.hi: ../../Utils/Auxiliary.hs
+Test2.hi: Test2.hs ../../Utils/Template.hi
+Test1Import.hi: Test1Import.hs
+Test2Import.hi: Test2Import.hs
