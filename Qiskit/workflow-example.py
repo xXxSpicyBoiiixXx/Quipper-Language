@@ -1,8 +1,10 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 from qiskit import QuantumCircuit, transpile
 from qiskit.providers.aer import QasmSimulator
 from qiskit.visualization import plot_histogram
+
 
 # Aer's qasm_simulator
 simulator = QasmSimulator()
@@ -31,3 +33,5 @@ print("\nTotal count for 00 and 11 are:", counts)
 circuit.draw()
 
 plot_histogram(counts)
+
+plt.show()
